@@ -1,0 +1,36 @@
+name: MongoDB Atlas CLI Setup and Verification
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  setup-mongo-atlas-cli:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout Repository
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    # Step 2: Install MongoDB Atlas CLI
+    - name: Install MongoDB Atlas CLI
+      run: curl -sSL https://www.mongodb.com/try/download/cli | bash
+
+    # Step 3: Configure MongoDB Atlas CLI
+    - name: Configure MongoDB Atlas CLI
+      env:
+        MCLI_PUBLIC_API_KEY: ${{ secrets.MONGO_ATLAS_PUBLIC_KEY }}
+        MCLI_PRIVATE_API_KEY: ${{ secrets.MONGO_ATLAS_PRIVATE_KEY }}
+        MCLI_ORG_ID: ${{ secrets.MONGO_ATLAS_ORG_ID }} # Optional, organization ID
+        MCLI_PROJECT_ID: ${{ secrets.MONGO_ATLAS_PROJECT_ID }} # Optional, project ID
+      run: |
+        mongocli atlas config init --profile default --force
+
+    # Step 4: Verify MongoDB Atlas CLI Configuration
+    - name: Verify MongoDB Atlas CLI Configuration
+      run: |
+        echo "Listing MongoDB Atlas projects..."
+        mongocli projects list --output json
