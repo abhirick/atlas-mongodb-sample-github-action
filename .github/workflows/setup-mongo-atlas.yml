@@ -27,10 +27,10 @@ jobs:
     # Step 3: Configure MongoDB Atlas CLI
     - name: Configure MongoDB Atlas CLI
       env:
-        MCLI_PUBLIC_API_KEY: ${{ secrets.MONGO_ATLAS_PUBLIC_KEY }}
-        MCLI_PRIVATE_API_KEY: ${{ secrets.MONGO_ATLAS_PRIVATE_KEY }}
-        MCLI_ORG_ID: ${{ secrets.MONGO_ATLAS_ORG_ID }} # Optional, organization ID
-        MCLI_PROJECT_ID: ${{ secrets.MONGO_ATLAS_PROJECT_ID }} # Optional, project ID
+        MONGODB_ATLAS_PUBLIC_API_KEY: ${{ secrets.MONGO_ATLAS_PUBLIC_KEY }}
+        MONGODB_ATLAS_PRIVATE_API_KEY: ${{ secrets.MONGO_ATLAS_PRIVATE_KEY }}
+        MONGODB_ATLAS_ORG_ID: ${{ secrets.MONGO_ATLAS_ORG_ID }} # Optional, organization ID
+        MONGODB_ATLAS_PROJECT_ID: ${{ secrets.MONGO_ATLAS_PROJECT_ID }} # Optional, project ID
       run: |
         atlas config init --profile default
 
