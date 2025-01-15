@@ -17,7 +17,9 @@ jobs:
 
     # Step 2: Install MongoDB Atlas CLI
     - name: Install MongoDB Atlas CLI
-      run: curl -sSL https://www.mongodb.com/try/download/cli | bash
+      run: |
+        curl -fsSL https://mongodb-cli.s3.amazonaws.com/mongocli-install.sh | bash
+
 
     # Step 3: Configure MongoDB Atlas CLI
     - name: Configure MongoDB Atlas CLI
