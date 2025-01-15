@@ -18,11 +18,6 @@ jobs:
     # Step 2: Install MongoDB Atlas CLI
     - name: Install MongoDB Atlas CLI
       run: |
-        sudo apt-get install gnupg curl
-
-    # Step 2: Install MongoDB Atlas CLI
-    - name: Install MongoDB Atlas CLI
-      run: |
         curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/mongodb-server-keyring.gpg] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
         sudo apt-get update
