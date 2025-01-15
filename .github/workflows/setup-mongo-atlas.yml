@@ -8,7 +8,7 @@ on:
 
 jobs:
   setup-mongo-atlas-cli:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     # Step 1: Checkout Repository
