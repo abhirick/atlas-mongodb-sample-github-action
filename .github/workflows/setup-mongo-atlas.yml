@@ -29,8 +29,8 @@ jobs:
       env:
         MONGODB_ATLAS_PUBLIC_API_KEY: ${{ secrets.MONGO_ATLAS_PUBLIC_KEY }}
         MONGODB_ATLAS_PRIVATE_API_KEY: ${{ secrets.MONGO_ATLAS_PRIVATE_KEY }}
-        MONGODB_ATLAS_ORG_ID: ${{ secrets.MONGO_ATLAS_ORG_ID }} # Optional, organization ID
-        MONGODB_ATLAS_PROJECT_ID: ${{ secrets.MONGO_ATLAS_PROJECT_ID }} # Optional, project ID
+        MONGODB_ATLAS_ORG_ID: 6786bbf02dcf780736e0d81e # Optional, organization ID
+        MONGODB_ATLAS_PROJECT_ID: 6786bbf02dcf780736e0d837 # Optional, project ID
       run: |
         atlas config init --profile default
 
