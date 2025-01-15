@@ -32,7 +32,7 @@ jobs:
         MCLI_ORG_ID: ${{ secrets.MONGO_ATLAS_ORG_ID }} # Optional, organization ID
         MCLI_PROJECT_ID: ${{ secrets.MONGO_ATLAS_PROJECT_ID }} # Optional, project ID
       run: |
-        atlas config init --profile default --force
+        atlas config init --profile default
 
     # Step 4: Verify MongoDB Atlas CLI Configuration
     - name: Verify MongoDB Atlas CLI Configuration
