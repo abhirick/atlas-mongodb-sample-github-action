@@ -16,26 +16,13 @@ jobs:
       uses: actions/checkout@v3
 
     # Step 2: Install MongoDB Atlas CLI
-    - name: Install MongoDB Atlas CLI
+    - name: Install MongoDB Shell (mongosh)
       run: |
-        curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-server-keyring.gpg
-        echo "deb [signed-by=/usr/share/keyrings/mongodb-server-keyring.gpg] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-        sudo apt-get update
-        sudo apt-get install -y mongodb-atlas-cli
+        wget -q https://downloads.mongodb.com/compass/mongosh-1.10.0-linux-x64.tgz
+        tar -xzf mongosh-1.10.0-linux-x64.tgz
+        mv mongosh-1.10.0-linux-x64/bin/mongosh /usr/local/bin/
 
-        
-    # Step 3: Configure MongoDB Atlas CLI
-    - name: Configure MongoDB Atlas CLI
-      env:
-        MONGODB_ATLAS_PUBLIC_API_KEY: ${{ secrets.MONGODB_ATLAS_PUBLIC_API_KEY }}
-        MONGODB_ATLAS_PRIVATE_API_KEY: ${{ secrets.MONGODB_ATLAS_PRIVATE_API_KEY }}
-        MONGODB_ATLAS_ORG_ID: 6786bbf02dcf780736e0d81e # Optional, organization ID
-        MONGODB_ATLAS_PROJECT_ID: 6786bbf02dcf780736e0d837 # Optional, project ID
-      run: |
-        atlas config init --profile default
+    # Step 3: Export MongoDB URI
+    - name: Export MongoDB URI
+      run: echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_ENV
 
-    # Step 4: Verify MongoDB Atlas CLI Configuration
-    - name: Verify MongoDB Atlas CLI Configuration
-      run: |
-        echo "Listing MongoDB Atlas projects..."
-        mongocli projects list --output json
