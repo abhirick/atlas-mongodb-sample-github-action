@@ -29,7 +29,7 @@ jobs:
     # Step 4: Create Collection
     - name: Create Collection and Schema
       run: |
-        "$MONGO_URI" <<EOF
-        use test
+        mongosh "$MONGO_URI" <<EOF
+        db
         db.myCollection.insertOne({ name: "example", value: 123 })
         EOF
