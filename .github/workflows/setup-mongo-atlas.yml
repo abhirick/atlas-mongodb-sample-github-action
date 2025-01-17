@@ -26,3 +26,10 @@ jobs:
     - name: Export MongoDB URI
       run: echo "MONGO_URI=${{ secrets.MONGO_URI }}" >> $GITHUB_ENV
 
+    # Step 4: Create Collection
+    - name: Create Collection and Schema
+      run: |
+        chmod +x create-schema.sh
+        ./create-schema.sh "${{ secrets.MONGO_URI }}"
+
+
