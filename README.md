@@ -104,27 +104,26 @@ You can run quick tests using:
 ## Error Handling
 This CLI has clear error handling for invalid scenarios:
 
- -Missing argument
-    ```bash
-    ./bin/numbers-to-words
-    # Error: Please provide a number to convert.
-    # Exit code: 1
-    ```
+Missing argument
+```bash
+./bin/numbers-to-words
+# Error: Please provide a number to convert.
+# Exit code: 1
+```
 
- -Non-numeric input
-    ```bash
-    ./bin/numbers-to-words Test
-    # Error: Invalid input. Please enter a valid integer.
-    # Exit code: 1
-    ```
+Non-numeric input
+```bash
+./bin/numbers-to-words Test
+# Error: Invalid input. Please enter a valid integer.
+# Exit code: 1
+```
 
- -Out of range (< 0 or > 100000)
-    ```bash
-    ./bin/numbers-to-words 200000
-    # Error: Number out of supported range (0–100,000).
-    # Exit code: 1
-    ```
-
+Out of range (< 0 or > 100000)
+```bash
+./bin/numbers-to-words 200000
+# Error: Number out of supported range (0–100,000).
+# Exit code: 1
+```
 ---
 
 ## Assumptions
