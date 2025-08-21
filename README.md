@@ -128,9 +128,9 @@ Out of range (< 0 or > 100000)
 
 ## Assumptions
 
--Input is always provided as a command-line argument.
--Output must strictly match expected grammar and formatting.
--Numbers outside the allowed range are rejected gracefully.
+    -Input is always provided as a command-line argument.
+    -Output must strictly match expected grammar and formatting.
+    -Numbers outside the allowed range are rejected gracefully.
 
 ## Exit Codes
 - **Exit Codes**:
