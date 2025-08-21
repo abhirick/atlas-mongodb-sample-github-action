@@ -37,7 +37,6 @@ chmod +x bin/numbers-to-words
 ```
 Edit bin/numbers-to-words and add the following:
 ```bash
-#!/bin/bash
 
 # Get the directory of the script
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -103,16 +102,36 @@ You can run quick tests using:
 ---
 
 ## Error Handling
+This CLI has clear error handling for invalid scenarios:
+
+ -Missing argument
+    ```bash
+    ./bin/numbers-to-words
+    # Error: Please provide a number to convert.
+    # Exit code: 1
+    ```
+
+ -Non-numeric input
+    ```bash
+    ./bin/numbers-to-words Test
+    # Error: Invalid input. Please enter a valid integer.
+    # Exit code: 1
+    ```
+
+ -Out of range (< 0 or > 100000)
+    ```bash
+    ./bin/numbers-to-words 200000
+    # Error: Number out of supported range (0–100,000).
+    # Exit code: 1
+    ```
 
 ---
 
 ## Assumptions
 
-Input is always provided as a command-line argument.
-
-Output must strictly match expected grammar and formatting.
-
-Numbers outside the allowed range are rejected gracefully.
+-Input is always provided as a command-line argument.
+-Output must strictly match expected grammar and formatting.
+-Numbers outside the allowed range are rejected gracefully.
 
 ## Exit Codes
 - **Exit Codes**:
